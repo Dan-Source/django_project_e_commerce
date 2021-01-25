@@ -27,12 +27,13 @@
               <a href="{% url 'index'%}">Início</a>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Categorias <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="">Notebooks</a></li>
-				<li><a href="">Acessórios</a></li>
-				<li><a href="">Celulares</a></li>
-              </ul>
+              <a id="download" class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:product_list'%}"> 
+              Categorias <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="download">
+                {% for category in categories %}
+                  <li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+                {% endfor %}
+                </ul>
             </li>
 			<li>
 				<a href="{% url 'contact'%}">Contato</a>
@@ -61,7 +62,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="{% static 'https://code.jquery.com/jquery-1.10.2.min.js' %}"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="{% static 'assets/bootstrap.min.js'%}"></script>
 </body>
 </html>
