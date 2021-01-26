@@ -13,9 +13,6 @@ class IndexView(View):
 
 index = IndexView.as_view()
 
-def index(request):
-    return render(request, 'index.html')
-
 def contact(request):
     success = False
     form = ContatcForm(request.POST or None)
