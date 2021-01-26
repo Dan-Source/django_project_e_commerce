@@ -9,7 +9,7 @@ from .forms import ContatcForm
 class IndexView(View):
 
     def get(self, request):
-        return render(resquest, 'index.html')
+        return render(request, 'index.html')
 
 index = IndexView.as_view()
 
