@@ -22,6 +22,7 @@ from . import catalog
 urlpatterns = [
     path('', index, name='index'),
     path('contato/', contact, name='contact'),
+    path('accounts/', include('django.contrib.auth.urls')),
     re_path(r'^catalogo/',include('catalog.urls', namespace='catalog')),
     path('admin/', admin.site.urls),
 ]
