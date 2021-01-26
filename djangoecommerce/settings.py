@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'wzqxs_*g4oj@ug^2mz41zls)i5-ou=u_)v(_#4c8v^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
