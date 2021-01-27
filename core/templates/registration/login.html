@@ -11,12 +11,12 @@ Entrar | {{ block.super }}
   <div class="col-md-8 col-md-offset-2"> 
     <div class="page-header"> 
         <h1>Entrar</h1>
-    </div>
-              {% for error in form.erros %}
+        {% for error in form.non_field_errors %}
                   <div class='alert alert-danger'>
                       {{ error }}
                   </div>
-                {% endfor %}
+        {% endfor %}
+    </div>  
                 <form class="form-horizontal" method="post">
                 {% csrf_token %}
                     <fieldset>
