@@ -137,6 +137,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
+
 #e-mail
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
