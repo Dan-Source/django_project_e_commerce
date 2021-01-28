@@ -150,6 +150,10 @@ LOGIN = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT = 'logout'
 AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend'
+)
 
 try:
     from .local_settings import *

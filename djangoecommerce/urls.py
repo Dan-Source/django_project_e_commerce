@@ -16,13 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from core.views import index, contact
+from django.contrib.auth import login, logout
 from . import catalog
 
 
 urlpatterns = [
     path('', index, name='index'),
     path('contato/', contact, name='contact'),
-    path('conta/', include('accounts.urls')),
+    path('conta/', include('accounts.urls', namespace='accounts')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('entrar/', login, name='login'),
+    path('sair/', logout, name='logout'),
     re_path(r'^catalogo/',include('catalog.urls', namespace='catalog')),
     path('admin/', admin.site.urls),
 ]

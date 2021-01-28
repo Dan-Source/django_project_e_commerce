@@ -13,6 +13,7 @@ class IndexView(View):
 
 index = IndexView.as_view()
 
+
 def contact(request):
     success = False
     form = ContatcForm(request.POST or None)
