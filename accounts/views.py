@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, UpdateView, FormView
@@ -49,3 +50,8 @@ register = RegisterView.as_view()
 update_user = UpdateUserView.as_view()
 update_password = UpdatePasswordView.as_view()
 index = IndexView.as_view()
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> test_login_cadastro
