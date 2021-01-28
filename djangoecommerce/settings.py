@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     #apps
     'core',
+    'accounts',
     'catalog',
 ]
 
@@ -137,6 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
+
 #e-mail
 EMAIL_HOST = ''
 EMAIL_HOST_USER = ''
@@ -148,6 +150,11 @@ DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 LOGIN = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT = 'logout'
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend'
+)
 
 try:
     from .local_settings import *

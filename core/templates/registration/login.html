@@ -11,25 +11,25 @@ Entrar | {{ block.super }}
   <div class="col-md-8 col-md-offset-2"> 
     <div class="page-header"> 
         <h1>Entrar</h1>
-    </div>
-              {% for error in form.erros %}
+        {% for error in form.non_field_errors %}
                   <div class='alert alert-danger'>
                       {{ error }}
                   </div>
-                {% endfor %}
+        {% endfor %}
+    </div>  
                 <form class="form-horizontal" method="post">
                 {% csrf_token %}
                     <fieldset>
-                        <div class="form-group">
+                        <div class="form-group {% if form.username.errors %} has-error {% endif %}">
                           <label for="{{form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label_tag }}</label>
                           <div class="col-md-9">
                           {% render_field form.username class='form-control' placeholder='Usuário'%}
-                          {% for error in form.username.erros %}
+                          {% for error in form.username.errors %}
                             <span class='help-block'>{{error}}</span>
                           {%endfor%}
                           </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {% if form.password.errors %} has-error {% endif %}">
                           <label for="{{form.password.auto_id}}id_email" class="col-md-3 control-label">{{ form.password.label }}</label>
                           <div class="col-md-9">
                             {% render_field form.password class="form-control" placeholder="Senha" %}

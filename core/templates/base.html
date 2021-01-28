@@ -40,12 +40,26 @@
 			</li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Minha Conta</a></li>
+<<<<<<< HEAD
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'index' %}">Conta</a></li>
+              <li><a href="{% url 'logout' %}">Sair</a></li>
+            {% else %}
+              <li><a href="{% url 'login' %}">Entrar</a></li>
+              <li><a href="{% url 'accounts:register' %}">Registro</a></li>
+            {% endif %}
+=======
+          {% if user.is_authenticated %}
+              <li><a href="{% url 'logout'%}">Sair</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Entrar</a></li>
+          {% endif %}
+>>>>>>> test_login_cadastro
           </ul>
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container margin-top">
 		{% block container %} {% endblock %}
 		</div>
 		<footer>
