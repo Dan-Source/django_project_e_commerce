@@ -1,7 +1,5 @@
 from django.contrib import admin
-<<<<<<< HEAD
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-
 from .models import User
 from .forms import UserAdminCreationForm, UserAdminForm
 
@@ -30,7 +28,3 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
-=======
-
-# Register your models here.
->>>>>>> test_login_cadastro

@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 import re
 from django.db import models
 from django.core import validators
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin, UserManager
-=======
-from django.db import models
-from django.core import validators
-from django.contrib.auth.models import (
-    AbstractBaseUser, 
-    UserManage, 
-    PermissionsMixin
->>>>>>> test_login_cadastro
 )
 
 
@@ -35,7 +26,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField('Ativo', default=True)
     date_joined = models.DateTimeField('Data de Entrada', auto_now_add=True)
 
-<<<<<<< HEAD
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
@@ -55,9 +45,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return str(self).split(' ')[0]
 
-=======
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
-
-    objects = UserManager()
->>>>>>> test_login_cadastro

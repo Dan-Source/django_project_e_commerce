@@ -42,10 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #libs
     'widget_tweaks',
+    'easy_thumbnails',
+    'pagseguro',
     #apps
     'core',
     'accounts',
     'catalog',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'checkout.middleware.cart_item_middleware',
 ]
 
 ROOT_URLCONF = 'djangoecommerce.urls'
@@ -155,6 +160,34 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.ModelBackend'
 )
+
+#MESSAGE_TAGS
+from django.contrib.messages import constants as messages_constants
+MESSAGE_TAGS = {
+    messages_constants.DEBUG: 'debug',
+    messages_constants.INFO: 'info',
+    messages_constants.SUCCESS: 'success',
+    messages_constants.WARNING: 'warning',
+    messages_constants.ERROR: 'danger',
+}
+
+PAGSEGURO_TOKEN = 'C880973AFCAC4145B835B4901EFF155F'
+PAGSEGURO_EMAIL = 'dan.dluis.dl@gmail.com'
+PAGSEGURO_SANDBOX = True
+PAGSEGURO_LOG_IN_MODEL = True
+
+# thumnails
+
+# Thumbnails
+THUMBNAIL_ALIASES = {
+    '': {
+        'product_image': {'size': (285, 160), 'crop': True},
+    },
+}
+#THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+
+
+
 
 try:
     from .local_settings import *
