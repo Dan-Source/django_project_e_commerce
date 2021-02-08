@@ -20,6 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ], help_text='Um nome curto que será usado'+
                     ' para identificá-lo de forma única na plataforma.'
     )
+    
     name = models.CharField('Nome', max_length=100)
     email = models.EmailField('E-mail', unique=True)
     is_staff = models.BooleanField('Equipe', default=False)

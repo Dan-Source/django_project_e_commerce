@@ -3,12 +3,21 @@ from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, UpdateView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.views import LoginView, LogoutView
 from .models import User
 from .forms import UserAdminCreationForm
+
 
 class IndexView(LoginRequiredMixin, TemplateView):
 
     template_name = 'accounts/index.html'
+
+class Login(LoginView):
+    model = User
+    template_name = 'accounts/login.html'
+
+class Logout(LogoutView):
+    template_name = 'accounts/logged_out.html'
 
 class RegisterView(CreateView):
 
@@ -44,7 +53,8 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 
 
 
-
+login = Login.as_view()
+logout = Logout.as_view()
 register = RegisterView.as_view()
 update_user = UpdateUserView.as_view()
 update_password = UpdatePasswordView.as_view()
