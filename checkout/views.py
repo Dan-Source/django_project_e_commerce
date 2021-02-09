@@ -84,7 +84,7 @@ class CartItemView(TemplateView):
 
 
 class CheckoutView(LoginRequiredMixin, TemplateView):
-
+    login_url = 'accounts:login'
     template_name = 'checkout/checkout.html'
 
     def get(self, request, *args, **kwargs):

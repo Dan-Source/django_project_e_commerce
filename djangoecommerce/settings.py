@@ -130,7 +130,7 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 #auth
 
-LOGIN = 'login'
+LOGIN = 'conta/entrar'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT = 'logout'
 AUTH_USER_MODEL = 'accounts.User'
