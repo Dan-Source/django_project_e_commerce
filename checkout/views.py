@@ -23,7 +23,7 @@ logger = logging.getLogger('checkout.views')
 
 
 class CreateCartItemView(View):
-
+    
     def get(self, request, *args, **kwargs):
         product = get_object_or_404(Product, slug=self.kwargs['slug'])
         logger.debug('Produto %s adicionado ao carrinho' % product)
@@ -84,7 +84,7 @@ class CartItemView(TemplateView):
 
 
 class CheckoutView(LoginRequiredMixin, TemplateView):
-
+    login_url = 'accounts:login'
     template_name = 'checkout/checkout.html'
 
     def get(self, request, *args, **kwargs):
