@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'watson',
     'pagseguro',
+    'crispy_forms',
     #apps
     'core',
     'accounts',

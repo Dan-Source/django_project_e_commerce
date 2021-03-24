@@ -12,7 +12,10 @@ decorator==4.4.2
 defusedxml==0.6.0
 dj-database-url==0.5.0
 Django==3.1.5
+django-crispy-forms==1.11.0
 django-heroku==0.3.1
+django-pagseguro2==3.0.0
+django-watson==1.5.5
 django-widget-tweaks==1.4.8
 easy-thumbnails==2.7.1
 entrypoints==0.3
@@ -44,6 +47,7 @@ pagseguro==0.3.4
 pandocfilters==1.4.3
 parso==0.8.1
 paypal==1.2.5
+pep8==1.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==8.1.0
@@ -56,6 +60,7 @@ Pygments==2.7.4
 pyparsing==2.4.7
 pyrsistent==0.17.3
 python-dateutil==2.8.1
+python-decouple==3.4
 pytz==2020.5
 pyzmq==21.0.1
 qtconsole==5.0.2

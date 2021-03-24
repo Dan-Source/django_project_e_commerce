@@ -13,6 +13,7 @@ urlpatterns = [
     re_path(r'^catalogo/',include('catalog.urls', namespace='catalog')),
     re_path(r'^compras/', include('checkout.urls', namespace='checkout')),
     path('admin/', admin.site.urls),
+    path('retorno/pagseguro/', include('pagseguro.urls')),
 ]
 
 if settings.DEBUG:
