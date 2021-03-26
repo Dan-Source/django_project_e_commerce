@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     #libs
     'widget_tweaks',
     'easy_thumbnails',
-    'watson',
+    #'watson',
     'pagseguro',
     #apps
     'core',

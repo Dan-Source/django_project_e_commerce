@@ -4,7 +4,7 @@ import requests
 from django.db import models
 from django.conf import settings
 
-from pagseguro.api import PagSeguroItem, PagSeguroApi
+#from pagseguro.api import PagSeguroItem, PagSeguroApi
 
 from catalog.models import Product
 
