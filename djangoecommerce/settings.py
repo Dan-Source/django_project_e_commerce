@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS =  config('ALLOWED_HOSTS',
                 cast=lambda v: [s.strip() for s in v.split(',')])
@@ -117,10 +117,10 @@ STATICFILES_DIRS = [
 
 
 #E-MAIL
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 #AUTH
 LOGIN = 'conta/entrar'
@@ -142,10 +142,10 @@ MESSAGE_TAGS = {
     messages_constants.ERROR: 'danger',
 }
 
-PAGSEGURO_TOKEN = config('PAGSEGURO_TOKEN')
-PAGSEGURO_EMAIL = config('PAGSEGURO_EMAIL')
-PAGSEGURO_SANDBOX = config('PAGSEGURO_SANDBOX')
-PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL')
+# PAGSEGURO_TOKEN = config('PAGSEGURO_TOKEN')
+# PAGSEGURO_EMAIL = config('PAGSEGURO_EMAIL')
+# PAGSEGURO_SANDBOX = config('PAGSEGURO_SANDBOX')
+# PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL')
 
 # Thumbnails
 THUMBNAIL_ALIASES = {
@@ -200,10 +200,10 @@ LOGGING = {
     }
 }
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
 
 import django_heroku
 
