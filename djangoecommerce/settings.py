@@ -14,7 +14,6 @@ ALLOWED_HOSTS =  config('ALLOWED_HOSTS',
                 cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,7 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoecommerce.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -76,6 +74,7 @@ DATABASES = {
     }
 }
 
+# Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -93,9 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
 
@@ -116,14 +112,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 
-#e-mail
+#E-MAIL
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
-#auth
-
+#AUTH
 LOGIN = 'conta/entrar'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT = 'logout'
@@ -154,7 +149,8 @@ THUMBNAIL_ALIASES = {
         'product_image': {'size': (285, 160), 'crop': True},
     },
 }
-#THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+
+# THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
 
 # cache
 CACHES = {
