@@ -14,7 +14,6 @@ ALLOWED_HOSTS =  config('ALLOWED_HOSTS',
                 cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,7 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoecommerce.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,8 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
@@ -154,7 +150,8 @@ THUMBNAIL_ALIASES = {
         'product_image': {'size': (285, 160), 'crop': True},
     },
 }
-#THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+
+# THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
 
 # cache
 CACHES = {
