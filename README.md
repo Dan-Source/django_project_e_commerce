@@ -3,13 +3,11 @@
 
 ##  Tecnologias
 
-Este projeto é feito em Django para atender a saboaria Fruto de Jatobá.
+Este projeto é feito em Django para criar uma aplicação para Ecommerce
 
 ## Escopo do Projeto
 
-obs: Ir descravendo o que irá fazer o sistema:
-
-  - Este projeto deve permitir que usuários registrem o seu acervo pessoal de livros. 
+- Projeto de Ecommerce constitui de varias aplicações que compõe uma loja.
 
 
 ## Primeiros Passos

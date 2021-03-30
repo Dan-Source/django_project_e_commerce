@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 from django.urls import reverse_lazy
 from django.conf import settings
@@ -18,7 +17,12 @@ class IndexView(View):
     def get(self, request):
         return render(request, 'index.html')
 
-index = IndexView.as_view()
+
+class RegisterView(CreateView):
+    model = User
+    template_name = 'register.html'
+    form_class = UserCreationForm
+    success_url = reverse_lazy('index')
 
 
 def contact(request):
@@ -35,13 +39,6 @@ def contact(request):
     }
     return render(request, 'contact.html', context)
 
-class RegisterView(CreateView):
-    model = User
-    template_name = 'register.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy('index')
-    
-   
 
 register = RegisterView.as_view()
-
+index = IndexView.as_view()
