@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 from pathlib import Path
 from decouple import config
 
@@ -10,7 +9,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False)
 
-ALLOWED_HOSTS =  config('ALLOWED_HOSTS', 
+ALLOWED_HOSTS =  config('ALLOWED_HOSTS',
                 cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
@@ -93,6 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Internationalization
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
@@ -111,6 +111,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 
 #E-MAIL
 EMAIL_HOST = config('EMAIL_HOST')
@@ -128,7 +132,7 @@ AUTHENTICATION_BACKENDS = (
     'accounts.backends.ModelBackend'
 )
 
-#MESSAGE_TAGS
+# MESSAGE_TAGS
 from django.contrib.messages import constants as messages_constants
 MESSAGE_TAGS = {
     messages_constants.DEBUG: 'debug',
@@ -195,9 +199,6 @@ LOGGING = {
         }
     }
 }
-
-
-
 
 try:
     from .local_settings import *
