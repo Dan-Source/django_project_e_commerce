@@ -8,6 +8,14 @@ Este projeto é feito em Django para criar uma aplicação para Ecommerce
 ## Escopo do Projeto
 
 - Projeto de Ecommerce constitui de varias aplicações que compõe uma loja.
+  - Contas
+  - Catalogo
+    - Categorias
+    - Produtos
+  - Checkout
+    - Order
+    - Cart
+
 
 
 ## Primeiros Passos
@@ -46,24 +54,6 @@ armazenar a informações sensivéis da aplicação
 # Documentação
 
 
-## Consulte os seguintes urls:
-
-### APIroot
-  - Abra a sua url_base/ (ex.: http://127.0.0.1:8000/auth/login/)
-  - Ná pagina 'APIRoot', poderá ser visualizado os endpoints da API.
-
-### Utilizando Swagger:
-   - Abra a sua url_base/swagger/ (ex.: http://127.0.0.1:8000/swagger/)
-
-
-### Utilizando o Redoc:
-  - Abra a sua url_base/redoc/ (ex.: http://127.0.0.1:8000/redoc/)
-
-### Ou importe o arquivo do Insominia:
-  - Insomnia_MY_BOOK_JSON
-
-## Fique atento a autenticação:
-
-O servidor gera um token que certifica a identidade do usuário.
-Assim o cliente pode enviar o token de volta para o servidor como meio que 
-verificar a requisição.
+### Este projeto ainda esta em fase de construção
+  - Adicionar um meio de pagamento
+  - Adicionar o Endereço para Entregas

@@ -1,6 +1,7 @@
 {
-    "python.linting.pylintEnabled": true,
-    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
     "python.linting.enabled": true,
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "yapf",
+    "python.linting.flake8Enabled": true
 }
