@@ -1,10 +1,13 @@
-from django.test import TestCase, Client, override_settings
+from django.test import Client, override_settings
+from django.core import mail
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase as TestCase
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import get_user_model
 
 from model_mommy import mommy
 
 User = get_user_model()
+
 class IndexViewTestCase(TestCase):
 
     def setUp(self):
@@ -46,20 +49,3 @@ class ContactViewTestCase(TestCase):
         self.assertTrue(response.context['success'])
         self.assertEquals(len(mail.outbox), 1)
         self.assertEquals(mail.outbox[0].subject, 'Contato do DjangoEcommerce')
-
-class LoginViewTestCase(TestCase):
-
-    def setUp(self):
-        self.client = Client()
-        self.login_url = reverse('login')
-        self.user = mommy.prepare(User)
-        self.user.set_password('123')
-        self.user.save()
-    
-    def tearDown(self):
-        self.user.delete()
-    
-    def test_login_ok(self):
-        response = self.client.get(self.login_url)
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'registration/login.html')

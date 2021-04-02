@@ -1,12 +1,10 @@
 from django.shortcuts import render
-
 from django.urls import reverse_lazy
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View, CreateView
-
 
 from .forms import ContatcForm
 

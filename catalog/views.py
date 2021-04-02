@@ -18,6 +18,7 @@ class ProductListView(generic.ListView):
             queryset = watson.filter(queryset, q)
         return queryset
 
+
 class CategoryListView(generic.ListView):
 
     template_name = 'catalog/category.html'

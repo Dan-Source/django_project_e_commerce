@@ -9,7 +9,7 @@ from catalog.models import Category, Product
 class CategoryTestCase(LiveServerTestCase):
 
     def setUp(self):
-        self.category = mommy.make('catalog.Category')
+        self.category = mommy.make(Category)
     
     def test_get_absolute_url(self):
         self.assertEquals(

@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, LiveServerTestCase
 from django.urls import reverse
 
 from model_mommy import mommy
@@ -6,7 +6,7 @@ from model_mommy import mommy
 from catalog.models import Product, Category
 
 
-class ProductListTesteCase(TestCase):
+class ProductListTesteCase(LiveServerTestCase):
 
     def setUp(self):
         self.url = reverse('catalog:product_list')
