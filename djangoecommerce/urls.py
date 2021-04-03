@@ -12,5 +12,10 @@ urlpatterns = [
     re_path(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     re_path(r'^compras/', include('checkout.urls', namespace='checkout')),
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )

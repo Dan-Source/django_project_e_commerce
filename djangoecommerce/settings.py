@@ -8,7 +8,6 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
@@ -25,7 +24,8 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     #'watson',
     'pagseguro',
-    
+
+    'crispy_forms',
     #apps
     'core',
     'accounts',
@@ -83,6 +83,7 @@ DATABASES = {
 
 # Password validation
 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.'+
@@ -100,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
