@@ -1,4 +1,3 @@
-#from pagseguro import PagSeguro
 import requests
 from xml.etree import ElementTree
 
@@ -26,7 +25,11 @@ class CartItem(models.Model):
     cart_key = models.CharField(
         'Chave do Carrinho', max_length=40, db_index=True
     )
-    product = models.ForeignKey('catalog.Product', verbose_name='Produto', on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        'catalog.Product', 
+        verbose_name='Produto', 
+        on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField('Quantidade', default=1)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
 
@@ -122,9 +125,7 @@ class Order(models.Model):
 
         email=settings.PAGSEGURO_EMAIL
         token=settings.PAGSEGURO_TOKEN
-        url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?'+
-            'email={{email}}&token={{token}}'
-'
+        #url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout?email={email}&token={token}'
 
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -132,7 +133,7 @@ class Order(models.Model):
 
         payload ={
             'email': '{{email}}',
-            token': '{{token}}',
+            'token': '{{token}}',
             'currency': 'BRL',
             'itemId1': '0001',
             'itemDescription1': 'Notebook Prata',

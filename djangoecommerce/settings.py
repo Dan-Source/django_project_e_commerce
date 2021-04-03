@@ -11,7 +11,8 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False)
 
 ALLOWED_HOSTS =  config('ALLOWED_HOSTS', 
-                cast=lambda v: [s.strip() for s in v.split(',')])
+                cast=lambda v: [s.strip() for s in v.split(',')]
+        )
 
 # Application definition
 
@@ -80,10 +81,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.'+
@@ -99,10 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
 
