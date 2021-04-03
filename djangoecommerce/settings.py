@@ -74,6 +74,13 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config("SQL_ENGINE"),
+#         'NAME': BASE_DIR / config("SQL_NAME_DATABASE"),
+#     }
+# }
+
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [

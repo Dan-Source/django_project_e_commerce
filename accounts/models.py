@@ -2,7 +2,7 @@ import re
 from django.db import models
 from django.core import validators
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin, UserManager
+    AbstractBaseUser, PermissionsMixin, UserManager
 )
 
 
@@ -45,4 +45,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return str(self).split(' ')[0]
-

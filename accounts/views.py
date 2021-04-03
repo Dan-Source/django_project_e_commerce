@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, UpdateView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,13 +11,19 @@ from .forms import UserAdminCreationForm
 class IndexView(LoginRequiredMixin, TemplateView):
 
     template_name = 'accounts/index.html'
+    login_url = reverse_lazy('accounts:login')
+
 
 class Login(LoginView):
+
     model = User
     template_name = 'accounts/login.html'
 
+
 class Logout(LogoutView):
+
     template_name = 'accounts/logged_out.html'
+
 
 class RegisterView(CreateView):
 
@@ -25,6 +31,7 @@ class RegisterView(CreateView):
     template_name = 'accounts/register.html'
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('index')
+
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
 
@@ -36,6 +43,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     def get_object(self):
         return self.request.user
 
+
 class UpdatePasswordView(LoginRequiredMixin, FormView):
 
     template_name = 'accounts/update_password.html'
@@ -46,6 +54,7 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         kwargs = super(UpdatePasswordView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
+
     def form_valid(self, form):
         form.save()
         return super(UpdatePasswordView, self).form_valid(form)
