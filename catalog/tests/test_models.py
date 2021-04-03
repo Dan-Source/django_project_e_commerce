@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, LiveServerTestCase
 from django.urls import reverse
 
 from model_mommy import mommy
@@ -6,10 +6,10 @@ from model_mommy import mommy
 from catalog.models import Category, Product
 
 
-class CategoryTestCase(TestCase):
+class CategoryTestCase(LiveServerTestCase):
 
     def setUp(self):
-        self.category = mommy.make('catalog.Category')
+        self.category = mommy.make(Category)
     
     def test_get_absolute_url(self):
         self.assertEquals(
@@ -17,7 +17,8 @@ class CategoryTestCase(TestCase):
             reverse('catalog:category', kwargs={'slug': self.category.slug})
         ),
 
-class ProductTestCase(TestCase):
+
+class ProductTestCase(LiveServerTestCase):
 
     def setUp(self):
         self.product = mommy.make(Product, slug='produto')

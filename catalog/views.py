@@ -2,9 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.db import models
 
-from watson import search as watson
-
 from .models import Product, Category
+
 
 class ProductListView(generic.ListView):
 
@@ -18,6 +17,7 @@ class ProductListView(generic.ListView):
         if q:
             queryset = watson.filter(queryset, q)
         return queryset
+
 
 class CategoryListView(generic.ListView):
 

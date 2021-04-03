@@ -1,8 +1,7 @@
-from .models import Category
+from catalog.models import Category
 
 def categories(request):
     context = {
         'categories': Category.objects.all(),
     }
     return context
-        

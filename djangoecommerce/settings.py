@@ -1,21 +1,17 @@
 import os
-import dj_database_url
 from pathlib import Path
-from decouple import config
+from decouple import config, Csv
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False)
 
-ALLOWED_HOSTS =  config('ALLOWED_HOSTS', 
-                cast=lambda v: [s.strip() for s in v.split(',')]
-        )
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,8 +22,9 @@ INSTALLED_APPS = [
     #libs
     'widget_tweaks',
     'easy_thumbnails',
-    'watson',
+    #'watson',
     'pagseguro',
+
     'crispy_forms',
     #apps
     'core',
@@ -54,7 +51,7 @@ ROOT_URLCONF = 'djangoecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,16 +67,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoecommerce.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config("SQL_ENGINE"),
+#         'NAME': BASE_DIR / config("SQL_NAME_DATABASE"),
+#     }
+# }
+
+# Password validation
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -97,6 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Recife'
@@ -107,23 +111,29 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-#e-mail
+WHITENOISE_MANIFEST_STRICT=False
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+#E-MAIL
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
-#auth
-
+#AUTH
 LOGIN = 'conta/entrar'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT = 'logout'
@@ -133,7 +143,7 @@ AUTHENTICATION_BACKENDS = (
     'accounts.backends.ModelBackend'
 )
 
-#MESSAGE_TAGS
+# MESSAGE_TAGS
 from django.contrib.messages import constants as messages_constants
 MESSAGE_TAGS = {
     messages_constants.DEBUG: 'debug',
@@ -154,7 +164,8 @@ THUMBNAIL_ALIASES = {
         'product_image': {'size': (285, 160), 'crop': True},
     },
 }
-#THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+
+# THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
 
 # cache
 CACHES = {
@@ -199,9 +210,6 @@ LOGGING = {
         }
     }
 }
-
-
-
 
 try:
     from .local_settings import *

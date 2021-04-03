@@ -23,13 +23,19 @@ from .forms import UserAdminCreationForm
 class IndexView(LoginRequiredMixin, TemplateView):
 
     template_name = 'accounts/index.html'
+    login_url = reverse_lazy('accounts:login')
+
 
 class Login(LoginView):
+
     model = User
     template_name = 'accounts/login.html'
 
+
 class Logout(LogoutView):
+
     template_name = 'accounts/logged_out.html'
+
 
 class RegisterView(CreateView):
 
@@ -78,7 +84,6 @@ def password_reset_request(request):
             "form":form,
         })
 
-
 class UpdateUserView(LoginRequiredMixin, UpdateView):
 
     model = User
@@ -88,6 +93,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         return self.request.user
+
 
 class UpdatePasswordView(LoginRequiredMixin, FormView):
 
@@ -99,6 +105,7 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         kwargs = super(UpdatePasswordView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
+
     def form_valid(self, form):
         form.save()
         return super(UpdatePasswordView, self).form_valid(form)
