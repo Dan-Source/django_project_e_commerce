@@ -15,23 +15,35 @@ urlpatterns = [
     path('registro/', views.register, name='register'),
     path('entrar/', views.login, name='login'),
     path('sair/', views.logout, name='logout'),
-    path('recuperar-senha/', views.password_reset_request, name='password_reset'),
-    path('recuperar-senha-ok/', auth_views.PasswordResetDoneView.as_view(
-        template_name='accounts/password/password_reset_done.html'),
+    path('recuperar-senha/',
+        views.password_reset_request,
+        name='password_reset'
+    ),
+    path('recuperar-senha-ok/', 
+        auth_views.PasswordResetDoneView.as_view(
+        template_name='accounts/password/password_reset_done.html'
+        ),
         name='password_reset_done',
     ),
-    path('recuperar-senha-completo/', auth_views.PasswordResetDoneView.as_view(
-        template_name='accounts/password/password_reset_complete.html'),
-        name='password_reset_complete',
+    path('recuperar-senha-completo/',
+        auth_views.PasswordResetDoneView.as_view(
+            template_name='accounts/password/password_reset_complete.html'
+            ),
+            name='password_reset_complete',
     ),
     path('recuperar-senha-confirmar/<uidb64>/<token>/', 
         auth_views.PasswordResetConfirmView.as_view(
         template_name='accounts/password/password_reset_confirm.html',
-        success_url=reverse_lazy("accounts:password_reset_complete")),
+        success_url=reverse_lazy("accounts:password_reset_complete")
+        ),
         name='password_reset_confirm'
     ),
-    path('password_reset_confirm', views.password_reset_request, name="password_reset")
-    
+    path(
+        'password_reset_confirm',
+        views.password_reset_request,
+        name="password_reset"
+    )
+
 ]
 
 

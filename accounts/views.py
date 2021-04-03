@@ -87,6 +87,7 @@ def password_reset_request(request):
 class UpdateUserView(LoginRequiredMixin, UpdateView):
 
     model = User
+    login_url = reverse_lazy('accounts:login')
     template_name = 'accounts/update_user.html'
     fields = ['name', 'email']
     success_url = reverse_lazy('accounts:index')
@@ -98,6 +99,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 class UpdatePasswordView(LoginRequiredMixin, FormView):
 
     template_name = 'accounts/update_password.html'
+    login_url = reverse_lazy('accounts:login')
     success_url = reverse_lazy('accounts:index')
     form_class = PasswordChangeForm
 
