@@ -1,6 +1,6 @@
 
 import logging
-import json
+
 
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, redirect
@@ -128,14 +128,7 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
             Order.objects.filter(user=self.request.user), pk=order_pk
         )
         pg = order.pagseguro()
-        pg.redirect_url = self.request.build_absolute_uri(
-            reverse('checkout:order_detail', args=[order.pk])
-        )
-        pg.notification_url = self.request.build_absolute_uri(
-            reverse('checkout:pagseguro_notification')
-        )
-        response = pg.checkout()
-        return response.redirect_url
+        return pg.redirect_url
 
 
 
