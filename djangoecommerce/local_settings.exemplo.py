@@ -13,6 +13,6 @@ DATABASES = {
     }
 }
 
-
+WHITENOISE_MANIFEST_STRICT=False
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
