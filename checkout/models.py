@@ -5,6 +5,8 @@ from django.db import models
 from django.conf import settings
 from catalog.models import Product
 
+
+
 class CartItemManager(models.Manager):
     
     def add_item(self, cart_key, product):
@@ -16,9 +18,12 @@ class CartItemManager(models.Manager):
         else:
             created = True
             cart_item = CartItem.objects.create(
-                cart_key=cart_key, product=product, price=product.price
+                cart_key=cart_key, 
+                product=product, 
+                price=product.price
             )
         return cart_item, created
+
 
 class CartItem(models.Model):
     
@@ -43,6 +48,7 @@ class CartItem(models.Model):
     def __str__(self):
         return '{} [{}]'.format(self.product, self.quantity)
 
+
 class OrderManager(models.Manager):
     
     def create_order(self, user, cart_items):
@@ -55,6 +61,7 @@ class OrderManager(models.Manager):
                 price=cart_item.price
             )
         return order
+
 
 class Order(models.Model):
     

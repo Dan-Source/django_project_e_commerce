@@ -12,7 +12,10 @@
 		  <div class="col-sm-4">
 			  <a href="{{ product.get_absolute_url }}" class="thumbnail">
 				{% if product.image %}
-				<img src="{{ product.image|thumbnail_url:'product_image'}}" alt="" />
+				<img
+					src="{{ product.image|thumbnail_url:'product_image'}}" 
+					alt="Product Image" 7
+				/>
 				{% else %}
 				<img src="http://placehold.it/350x250" alt="" />
 				{% endif %}
@@ -20,6 +23,9 @@
 		  </div>
 		  <div class="col-sm-8">
 			  {{ product.description|linebreaks }}
+			<a href="{% url 'checkout:create_cartitem' product.slug %}"
+				class="btn btn-success cart-item-add"
+				role="button"> Adicionar Ao Carrinho</a>
 		  </div>
 		</div>
 {% endblock %}

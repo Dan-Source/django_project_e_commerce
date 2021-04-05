@@ -16,7 +16,7 @@ from django.http import HttpResponse
 
 from catalog.models import Product
 
-from .models import CartItem, Order
+from checkout.models import CartItem, Order
 
 
 logger = logging.getLogger('checkout.views')

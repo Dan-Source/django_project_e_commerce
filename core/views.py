@@ -26,11 +26,14 @@ class RegisterView(CreateView):
 def contact(request):
     success = False
     form = ContatcForm(request.POST or None)
+
     if form.is_valid():
         form.send_mail()
         success = True
+    
     elif request.method == 'POST':
         messages.error(request, 'Formulário Inválido.')
+    
     context = {
         'form': form,
         'success': success
