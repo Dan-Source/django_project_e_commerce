@@ -29,11 +29,11 @@
         {% for order in object_list %}
         <tr>
             <td>
-                <a href="{% url 'checkout:order_detail' order.pk %}">#{{ order.pk }}</a>
+                <a href="{% url 'checkout:order_detail' order.pk %}"># {{ order.pk }}</a>
             </td>
             <td>
                 {% for product in order.products %}
-                {{ product.name }}{% if not forloop.last %}<br />{% endif %}
+                    {{ product.name }}{% if not forloop.last %}<br />{% endif %}
                 {% endfor %}
             </td>
             <td>

@@ -84,6 +84,7 @@ class CartItemView(TemplateView):
 
 
 class CheckoutView(LoginRequiredMixin, TemplateView):
+    
     login_url = 'accounts:login'
     template_name = 'checkout/checkout.html'
 
@@ -127,8 +128,14 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
         order = get_object_or_404(
             Order.objects.filter(user=self.request.user), pk=order_pk
         )
+        url = self.request.build_absolute_uri(
+            reverse('checkout:order_detail', args=[order.pk])
+        )
         pg = order.pagseguro()
-        return pg.redirect_url
+        response = pg.checkout()
+        print(response)
+
+        return response['redirect_url']
 
 
 
