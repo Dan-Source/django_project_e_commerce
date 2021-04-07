@@ -12,6 +12,7 @@ urlpatterns = [
     re_path(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     re_path(r'^compras/', include('checkout.urls', namespace='checkout')),
     path('admin/', admin.site.urls),
+    path('paypal/', include("paypal.standard.ipn.urls")),
 ]
 
 if settings.DEBUG:

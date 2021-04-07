@@ -1,11 +1,14 @@
 
 import logging
 
-
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import (
-    RedirectView, TemplateView, ListView, DetailView, View
+    RedirectView,
+    TemplateView,
+    ListView,
+    DetailView,
+    View
 )
 from django.forms import modelformset_factory
 from django.contrib import messages
@@ -120,44 +123,12 @@ class OrderDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
+class PaypalView(LoginRequiredMixin, DetailView):
+    
+    template_name = 'checkout/paypal.html'
 
-class PagSeguroView(LoginRequiredMixin, RedirectView):
-
-    def get_redirect_url(self, *args, **kwargs):
-        order_pk = self.kwargs.get('pk')
-        order = get_object_or_404(
-            Order.objects.filter(user=self.request.user), pk=order_pk
-        )
-        url = self.request.build_absolute_uri(
-            reverse('checkout:order_detail', args=[order.pk])
-        )
-        pg = order.pagseguro()
-        response = pg.checkout()
-        print(response)
-
-        return response['redirect_url']
-
-
-
-@csrf_exempt
-def pagseguro_notification(request):
-    notification_code = request.POST.get('notificationCode', None)
-    if notification_code:
-        pg = PagSeguro(
-            email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
-            config={'sandbox': settings.PAGSEGURO_SANDBOX}
-        )
-        notification_data = pg.check_notification(notification_code)
-        status = notification_data.status
-        reference = notification_data.reference
-        try:
-            order = Order.objects.get(pk=reference)
-        except Order.DoesNotExist:
-            pass
-        else:
-            order.pagseguro_update_status(status)
-    return HttpResponse('OK')
-
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
 
 
 
@@ -166,4 +137,4 @@ cart_item = CartItemView.as_view()
 checkout = CheckoutView.as_view()
 order_list = OrderListView.as_view()
 order_detail = OrderDetailView.as_view()
-pagseguro_view = PagSeguroView.as_view()
+paypal_view = PaypalView.as_view()

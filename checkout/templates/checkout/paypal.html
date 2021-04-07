@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Pagamento via Paypal
+{% endblock %}
+
+{% block container %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'index' %}">Início</a></li>
+    <li><a href="{% url 'checkout:cart_item' %}">Carrinho de Compras</a></li>
+    <li class="active">Pagamento via Paypal</li>
+</ol>
+<div class="page-header">
+    <h1>Pagamento com PayPal</h1>
+    <h2>{{ order.total}}</h2>
+    <h2>{{ order}}</h2>
+</div>
+<div id="paypal-button-container">
+</div>
+{% endblock %}
+{% block scripts %}
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AaQrYHwE0DqBDRCjWCW4hzscFH0cJo-trL_nw4P7I3pAf2rRnjc3c_7GkBbYieOU8cf0pi_4RQRvlPM_&currency=BRL"></script>
+<script>
+    // Render the PayPal button into #paypal-button-container
+    let total = '{{ order.total|floatformat:"2" }}'
+    paypal.Buttons({
+        // Set up the transaction
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: parseFloat(total).toFixed(2)
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                // Show a success message to the buyer
+                '{{ order.complete }}'
+                '{{ order.paypal }}'
+                alert('A pedido #{{ order }} completou ' + details.payer.name.given_name +'!');
+            });
+        },
+        style: {
+            color: 'blue',
+            shape: 'pill',
+            label: 'pay',
+            height: 40
+        }
+    }).render('#paypal-button-container');
+</script>
+{% endblock %}

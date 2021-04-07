@@ -1,11 +1,7 @@
 import requests
-from xml.etree import ElementTree
-
 from django.db import models
 from django.conf import settings
 from catalog.models import Product
-
-from pagseguro import api
 
 
 
@@ -75,7 +71,6 @@ class Order(models.Model):
 
     PAYMENT_OPTION_CHOICES = (
         ('deposit', 'Depósito'),
-        ('pagseguro', 'PagSeguro'),
         ('paypal', 'Paypal'),
     )
 
@@ -116,59 +111,14 @@ class Order(models.Model):
             )
         )
         return aggregate_queryset['total']
-
-    def pagseguro_update_status(self, status):
-        if status == '3':
-            self.status = 1
-        elif status == '7':
-            self.status = 2
+    
+    def paypal(self):
+        self.payment_option = 'paypal'
         self.save()
 
     def complete(self):
         self.status = 1
         self.save()
-
-    def pagseguro(self):
-        self.payment_option = 'pagseguro'
-        self.save()
-
-        
-        data = api.PagSeguroApi()
-        print(data)
-        for item in self.items.all():
-            print(item)
-            id = item.product.id
-            description =  item.product.name
-            amount = '{:2f}'.format(item.price)
-            quantity = item.quantity
-            item = api.PagSeguroItem(
-               id=id, description=description, amount=amount, quantity=quantity
-            )
-            print(item)
-            data.add_item(item)
-            print(data.get_items())
-        
-        return data
-    
-        
-    def paypal(self):
-        self.payment_option = 'paypal'
-        self.save()
-        paypal_dict = {
-            'upload': '1',
-            'business': settings.PAYPAL_EMAIL,
-            'invoice': self.pk,
-            'cmd': '_cart',
-            'currency_code': 'BRL',
-            'charset': 'utf-8',
-        }
-        index = 1
-        for item in self.items.all():
-            paypal_dict['amount_{}'.format(index)] = '%.2f' % item.price
-            paypal_dict['item_name_{}'.format(index)] = item.product.name
-            paypal_dict['quantity_{}'.format(index)] = item.quantity
-            index = index + 1
-        return paypal_dict
 
 
 class OrderItem(models.Model):

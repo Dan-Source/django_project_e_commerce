@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     #'watson',
     'pagseguro',
+    'paypal.standard.ipn',
 
     'crispy_forms',
     #apps
@@ -158,6 +159,10 @@ PAGSEGURO_TOKEN = config('PAGSEGURO_TOKEN')
 PAGSEGURO_EMAIL = config('PAGSEGURO_EMAIL')
 PAGSEGURO_SANDBOX = config('PAGSEGURO_SANDBOX') 
 PAGSEGURO_LOG_IN_MODEL = config('PAGSEGURO_LOG_IN_MODEL')
+# PayPal
+
+PAYPAL_TEST = True
+PAYPAL_EMAIL = 'dan.dluis.dl@gmail.com'
 
 # Thumbnails
 THUMBNAIL_ALIASES = {
