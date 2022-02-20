@@ -7,16 +7,16 @@ Este projeto é feito em Django para criar uma aplicação para Ecommerce.
 
 ## Escopo do Projeto
 
-- Projeto de Ecommerce constitui de varias aplicações que compõe uma loja.
+- Projeto de Ecommerce constitui de varias aplicações com funcionalide que simulam uma loja online.
   - Contas
   - Catalogo
     - Categorias
     - Produtos
   - Checkout
-    - Order
-    - Cart
+    - Pedidos
+    - Carrinho
 
-# O que foi feito para desenvolver o projeto
+### O que foi feito para desenvolver o projeto
 
 - Primeiro passo foi aprender a forma como funciona a framework
 - Depois você começa a definir o modelos para cada aplicação
@@ -30,7 +30,7 @@ Este projeto é feito em Django para criar uma aplicação para Ecommerce.
 - É bem chatinho fazer a configurações, mas quando esta tudo ok, e lindo de se ver...
 
 
-## Primeiros Passos
+### Clone e utilize este reposítório
 
 1. Clone do  repositório
 2. Entre na pasta do projeto
