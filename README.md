@@ -1,9 +1,9 @@
-# Projeto de Ecommerce
+# Ecommerce
 
 
 ##  Tecnologias
 
-Este projeto é feito em Django para criar uma aplicação para Ecommerce
+Este projeto é feito em Django para criar uma aplicação para Ecommerce.
 
 ## Escopo do Projeto
 
@@ -16,6 +16,18 @@ Este projeto é feito em Django para criar uma aplicação para Ecommerce
     - Order
     - Cart
 
+# O que foi feito para desenvolver o projeto
+
+- Primeiro passo foi aprender a forma como funciona a framework
+- Depois você começa a definir o modelos para cada aplicação
+- Define a relação entre esses modelos
+- Você pode testa-los de forma rápida e simples pelo admin da framework
+- Ou pode criar, editar e deletar pelo shell com o ORM
+- Depois de criado os modelos você pode construir o templates, que vão renderizar a informações de forma personalizda.
+- Neste momento você pode aplicar o HTML, CSS e JS para criar o frontend com a redenrização a partir do templates.
+- Foram feitos alguns testes para testar os modelos e se as funcionalidades estão de acordo esperado
+- É bom ir fazendo deploy da aplicação para ver se esta tudo correto...
+- É bem chatinho fazer a configurações, mas quando esta tudo ok, e lindo de se ver...
 
 
 ## Primeiros Passos
@@ -51,9 +63,9 @@ armazenar a informações sensivéis da aplicação
   $ ./manage.py runserver
   ```
 
-# Documentação
-
-
 ### Este projeto ainda esta em fase de construção
-  - Adicionar um meio de pagamento
+  - Adicionar um forma de manter a imagens na aplicação, a melhor solução vai ser usar um serviço a AWS
   - Adicionar o Endereço para Entregas
+  - Melhorar a visual da aplicação
+  - Organizar melhor o menus e adicionar um conteudo melhor na pagina inicial
+  - Colocar alguma coisa com Vue JS... Talvez o carrinho e algum formulário...
